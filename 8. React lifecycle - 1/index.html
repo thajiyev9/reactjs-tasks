@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>React Lifecycle Exercise</title>
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/handouts-sphinx.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic|Inconsolata:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <div id="page-sidebar">
+        <header>
+          <p class="project">Demo</p>
+
+          <p class="title">React Lifecycle Exercise</p>
+        </header>
+        <div id="toc">
+          <ul>
+            <li>
+              <a class="reference internal" href="#"
+                >React Lifecycle Exercise</a
+              >
+              <ul>
+                <li>
+                  <a class="reference internal" href="#part-i-deck-of-cards"
+                    >Part I - Deck of Cards</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#part-ii-cheezjokes-app"
+                    >Part II - CheeZJokes App</a
+                  >
+                  <ul>
+                    <li>
+                      <a class="reference internal" href="#further-study"
+                        >Further Study</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="page-content">
+        <div class="section" id="react-lifecycle-exercise">
+          <h1>React Lifecycle Exercise</h1>
+          <div class="section" id="part-i-deck-of-cards">
+            <h2>Part I - Deck of Cards</h2>
+            <p>
+              Build an app that displays a deck of cards, one card at a time.
+              When the page loads, send a request to
+              <a
+                class="reference external"
+                href="https://deckofcardsapi.com/api/deck/new/shuffle"
+                >https://deckofcardsapi.com/api/deck/new/shuffle</a
+              >
+              to create a new deck. Store the Deck ID it gives you, so you can
+              make further requests to retreive each card image. Add a button to
+              your app that allows a user to draw a new card.
+            </p>
+            <p>
+              When a user clicks the button, send another request to the API,
+              this time to
+              <a
+                class="reference external"
+                href="https://deckofcardsapi.com/api/deck/${deck_id}/draw/"
+                >https://deckofcardsapi.com/api/deck/${deck_id}/draw/</a
+              >. (make sure to use your actual deck ID). Use the data included
+              in the response to display a new card image, and make sure to
+              include an informative alt attribute.
+            </p>
+            <p>
+              Every time the user clicks, the app should display a new card
+              until the deck is empty. Make sure to tell the user there are no
+              cards left!
+            </p>
+            <p>Here’s how this might look (with styling added):</p>
+            <a
+              class="reference internal image-reference"
+              href="_images/cards.gif"
+              ><img
+                alt="_images/cards.gif"
+                src="_images/cards.gif"
+                style="width: 80%;"
+            /></a>
+          </div>
+          <div class="section" id="part-ii-cheezjokes-app">
+            <h2>Part II - CheeZJokes App</h2>
+            <p>
+              Build an app that lets people view and vote on cheesy jokes. To
+              generate jokes, you’ll use the
+              <a
+                class="reference external"
+                href="https://icanhazdadjoke.com/api"
+                >ICanHazDadJoke API</a
+              >.
+            </p>
+            <a
+              class="reference internal image-reference"
+              href="_images/jokes.png"
+              ><img
+                alt="_images/jokes.png"
+                src="_images/jokes.png"
+                style="width: 80%;"
+            /></a>
+            <p>When the page loads, it should fetch 10 jokes.</p>
+            <p>
+              Your application should list the jokes, along with a “vote-up”
+              button, a “vote-down” button, and the net score for each joke.
+              Users can vote, and the net score should update.
+            </p>
+            <div class="section" id="further-study">
+              <h3>Further Study</h3>
+              <ul class="simple">
+                <li>
+                  When jokes are loading, display a loading spinner or message
+                  notifying the user that the jokes are being loaded. This
+                  should hide once the jokes have finished loading.
+                </li>
+                <li>Make sure that there are no duplicate jokes shown.</li>
+                <li>
+                  Show the jokes sorted by net score, and update this as the
+                  scores change.
+                </li>
+                <li>
+                  Store the list of jokes, with votes in local storage. When
+                  users visit the app, it should show saved jokes, rather than
+                  fetching new jokes. However, the user should still be able to
+                  generate new jokes via the button, and these new jokes should
+                  replace the ones in local storage.
+                </li>
+                <li>
+                  Add CSS styling for the joke app, including FontAwesome
+                  thumbs-up/down images for the voting buttons. Make the loading
+                  spinner using FA — you can spin any icon of theirs.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+  </body>
+</html>

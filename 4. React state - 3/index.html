@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>React State Exercises</title>
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/handouts-sphinx.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic|Inconsolata:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <div id="page-sidebar">
+        <header>
+          <p class="project">Demo</p>
+
+          <p class="title">React State Exercises</p>
+        </header>
+        <div id="toc">
+          <ul>
+            <li>
+              <a class="reference internal" href="#">React State Exercises</a>
+              <ul>
+                <li>
+                  <a class="reference internal" href="#part-1-coin-flip"
+                    >Part 1: Coin Flip</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#part-2-color-boxes"
+                    >Part 2: Color Boxes</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#further-study"
+                    >Further Study</a
+                  >
+                  <ul>
+                    <li>
+                      <a class="reference internal" href="#default-properties"
+                        >Default Properties</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="reference internal"
+                        href="#color-boxes-data-flow"
+                        >Color Boxes Data Flow</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="page-content">
+        <div class="section" id="react-state-exercises">
+          <h1>React State Exercises</h1>
+          <p>
+            This exercise gives you some practice working with props,
+            defaultProps, state, and simple click events in React.
+          </p>
+          <p>
+            You’ll also get more experience setting state and binding event
+            handlers. Really important stuff!
+          </p>
+          <p>
+            For each exercise: make a new React project with
+            <cite>create-react-app</cite>.
+          </p>
+          <div class="section" id="part-1-coin-flip">
+            <h2>Part 1: Coin Flip</h2>
+            <p>For this part, create a coin flipping counter.</p>
+            <p>
+              The user should be able to click on a button to flip a coin. Every
+              time the user clicks, the coin gets flipped again. The app should
+              also keep track of how many times heads and tails have shown up.
+            </p>
+            <p>
+              Before building anything,
+              <em>think about the structure of your React app.</em> Don’t build
+              this application with a single component: think about how to break
+              your app up into at least two separate components!
+            </p>
+            <p>Here’s some inspiration:</p>
+            <a
+              class="reference internal image-reference"
+              href="_images/coin.gif"
+              ><img
+                alt="_images/coin.gif"
+                src="_images/coin.gif"
+                style="width: 100%;"
+            /></a>
+            <p>
+              If you’d like, get creative and come up with your own coin faces!
+              If you want to use the same coin as I did, you can find the images
+              here:
+            </p>
+            <p>
+              Heads:”<a
+                class="reference external"
+                href="https://tinyurl.com/react-coin-heads-jpg"
+                >https://tinyurl.com/react-coin-heads-jpg</a
+              >” Tails: “<a
+                class="reference external"
+                href="https://tinyurl.com/react-coin-tails-jpg"
+                >https://tinyurl.com/react-coin-tails-jpg</a
+              >”
+            </p>
+          </div>
+          <div class="section" id="part-2-color-boxes">
+            <h2>Part 2: Color Boxes</h2>
+            <p>
+              For this part, you should show a series of 16 boxes (a box is just
+              square div with a background color).
+            </p>
+            <p>
+              Initially, each box should have a background color chosen from a
+              random list of colors.
+            </p>
+            <p>When you click any box:</p>
+            <ul class="simple">
+              <li>
+                it should change its color to a
+                <strong>different</strong> random color.
+              </li>
+            </ul>
+            <p>Here’s some inspiration:</p>
+            <a
+              class="reference internal image-reference"
+              href="_images/colors.gif"
+              ><img
+                alt="_images/colors.gif"
+                src="_images/colors.gif"
+                style="width: 100%;"
+            /></a>
+            <div class="admonition note">
+              <p>Downward Data Flow?</p>
+              <p>
+                For this exercise, you might need to violate the “children are
+                dumber than their parents” rule of thumb, since each box will
+                probably need to have its own color state, while the parent
+                container doesn’t really need to be smart.
+              </p>
+              <p class="last">
+                One of the further study points is to see if you can design the
+                app to make the container smarter than the child boxes. This is
+                quite advanced though, so be careful if you go down this path!
+              </p>
+            </div>
+          </div>
+          <div class="section" id="further-study">
+            <h2>Further Study</h2>
+            <div class="section" id="default-properties">
+              <h3>Default Properties</h3>
+              <p>
+                For both parts, there are opportunities to move some things into
+                default properties:
+              </p>
+              <ul class="simple">
+                <li>the list of possible colors for boxes</li>
+                <li>
+                  the number of boxes (so it doesn’t always have to be 16!)
+                </li>
+                <li>the sides and images for the coin being flipped</li>
+              </ul>
+            </div>
+            <div class="section" id="color-boxes-data-flow">
+              <h3>Color Boxes Data Flow</h3>
+              <p>
+                Try to make the parent container of color boxes hold all the
+                state. It’s a little tricky with what we know now. We’ll cover
+                it soon, once we talk about react events in detail. Don’t sweat
+                it if you get stuck!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+  </body>
+</html>

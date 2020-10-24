@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>React Forms Exercises</title>
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/handouts-sphinx.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic|Inconsolata:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <div id="page-sidebar">
+        <header>
+          <p class="project">Demo</p>
+
+          <p class="title">React Forms Exercises</p>
+        </header>
+        <div id="toc">
+          <ul>
+            <li>
+              <a class="reference internal" href="#">React Forms Exercises</a>
+              <ul>
+                <li>
+                  <a class="reference internal" href="#part-1-color-box-maker"
+                    >Part 1 - Color Box Maker</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-2-todo-app-list-add-remove-todos"
+                    >Part 2 - Todo App - List, Add, Remove Todos</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#part-3-todo-app-editing"
+                    >Part 3 - Todo App - Editing</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#further-study"
+                    >Further Study</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="page-content">
+        <div class="section" id="react-forms-exercises">
+          <h1>React Forms Exercises</h1>
+          <p>
+            These exercises will give you more practice working with React
+            forms.
+          </p>
+          <div class="section" id="part-1-color-box-maker">
+            <h2>Part 1 - Color Box Maker</h2>
+            <p>
+              Create a new React application, which contains the following
+              components:
+            </p>
+            <ul class="simple">
+              <li>
+                <cite>App</cite> - this component should render the
+                <cite>BoxList</cite> component.
+              </li>
+              <li>
+                <cite>BoxList</cite> - Place your state that contains all of the
+                boxes here. This component should render all of the
+                <cite>Box</cite> components along with the
+                <cite>NewBoxForm</cite> component
+              </li>
+              <li>
+                <cite>Box</cite>- this component should display a
+                <cite>div</cite> with a background color, width and height based
+                on the props passed to it.
+              </li>
+              <li>
+                <cite>NewBoxForm</cite> - this component should render a form
+                that when submitted, creates a new <cite>Box</cite>. You should
+                be able to specify the <cite>Box</cite>’s width, height, and
+                background color. When the form is submitted, clear the input
+                values.
+              </li>
+              <li>
+                When each <cite>Box</cite> component is displayed, add a button
+                with the text of of “X” next to each <cite>Box</cite>. When this
+                button is clicked, remove that specific box. This will require
+                you to pass a function down as props - the button
+                <strong>should not</strong> be a seperate component, it should
+                be included in the Box component.
+              </li>
+            </ul>
+          </div>
+          <div class="section" id="part-2-todo-app-list-add-remove-todos">
+            <h2>Part 2 - Todo App - List, Add, Remove Todos</h2>
+            <p>
+              Create a Todo App that allows users to see, add, edit, and remove
+              todos. It should contain the following components.
+            </p>
+            <ul class="simple">
+              <li>
+                <cite>App</cite> - this component should render the
+                <cite>TodoList</cite> component
+              </li>
+              <li>
+                <cite>TodoList</cite> - this component should render the
+                <cite>NewTodoForm</cite> component and should render the list of
+                Todo components. Place your state that contains all of the todos
+                in this component.
+              </li>
+              <li>
+                <cite>NewTodoForm</cite> - this component should render a form
+                with one text input for the task to be created. When this form
+                is submitted, a new <cite>Todo</cite> component should be
+                created.
+              </li>
+              <li>
+                <cite>Todo</cite>- this component should display a
+                <cite>div</cite> with the task of the todo.
+              </li>
+              <li>
+                For each Todo component, there should also be a button with the
+                text “X” that when clicked, removes the todo.
+              </li>
+            </ul>
+          </div>
+          <div class="section" id="part-3-todo-app-editing">
+            <h2>Part 3 - Todo App - Editing</h2>
+            <p>It’s time to edit some todos!</p>
+            <ul class="simple">
+              <li>
+                Each <cite>Todo</cite> component should also display a button
+                with the text “edit” that when clicked, displays a
+                <cite>form</cite> with the task of the todo as an input and a
+                button to submit the form. When the form is submitted, the task
+                of the text should be updated and the form should be hidden.
+              </li>
+            </ul>
+          </div>
+          <div class="section" id="further-study">
+            <h2>Further Study</h2>
+            <ul class="simple">
+              <li>
+                Alongside each <cite>Todo</cite>, add a button with the text
+                “Mark as completed”. When this button is clicked, add a strike
+                through the text of the todo.
+              </li>
+              <li>
+                Instead of a button, refactor your application so that the todo
+                itself can be clicked to mark it as completed. Add a
+                strikethrough style to the <cite>Todo</cite> if it is completed.
+                A user can toggle it on and off by clicking.
+              </li>
+              <li>
+                Add some styling to your application! Try to use a CSS animation
+                that fades out a <cite>Todo</cite> when it is deleted (this will
+                involve adding/removing CSS classes).
+              </li>
+              <li>
+                Save your todos in localStorage and retrieve them when the page
+                loads.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+  </body>
+</html>

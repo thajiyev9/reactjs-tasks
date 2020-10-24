@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hangman</title>
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/handouts-sphinx.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic|Inconsolata:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <div id="page-sidebar">
+        <header>
+          <p class="project">Demo</p>
+
+          <p class="title">Hangman</p>
+        </header>
+        <div id="toc">
+          <ul>
+            <li>
+              <a class="reference internal" href="#">Hangman</a>
+              <ul>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-zero-setup-startup-read-code"
+                    >Part Zero: Setup, Startup, Read Code</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#part-one-add-a-key"
+                    >Part One: Add A Key</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-two-number-of-wrong-guesses"
+                    >Part Two: Number of Wrong Guesses</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-three-end-game-on-loss"
+                    >Part Three: End Game on Loss</a
+                  >
+                </li>
+                <li>
+                  <a class="reference internal" href="#part-four-alt-text"
+                    >Part Four: Alt Text</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-five-use-a-random-word"
+                    >Part Five: Use a Random Word</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-six-add-restart-button"
+                    >Part Six: Add “Restart” Button</a
+                  >
+                  <ul>
+                    <li>
+                      <a class="reference internal" href="#further-study"
+                        >Further Study</a
+                      >
+                    </li>
+                    <li>
+                      <a class="reference internal" href="#additional-ideas"
+                        >Additional Ideas</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="page-content">
+        <div class="section" id="hangman">
+          <h1>Hangman</h1>
+          <p>A React hangman game exercise.</p>
+          <div class="section" id="part-zero-setup-startup-read-code">
+            <h2>Part Zero: Setup, Startup, Read Code</h2>
+            <ol class="arabic">
+              <li>
+                <p class="first">Install the required packages:</p>
+                <pre class="console literal-block">
+$ <span class="cmd">cd react-hangman</span>
+$ <span class="cmd">npm install</span>
+</pre>
+              </li>
+              <li>
+                <p class="first">Start the application:</p>
+                <pre class="console literal-block">
+$ <span class="cmd">npm start</span>
+</pre>
+              </li>
+              <li>
+                <p class="first">
+                  Play the game. It is functional, but always uses the same word
+                  (“apple”) as the secret word.
+                </p>
+              </li>
+              <li>
+                <p class="first">
+                  Read over the code: there is only one component,
+                  <cite>Hangman</cite>, in <cite>Hangman.js</cite>.
+                </p>
+              </li>
+            </ol>
+          </div>
+          <div class="section" id="part-one-add-a-key">
+            <h2>Part One: Add A Key</h2>
+            <p>Currently, the buttons don’t have a key prop. Fix this issue!</p>
+          </div>
+          <div class="section" id="part-two-number-of-wrong-guesses">
+            <h2>Part Two: Number of Wrong Guesses</h2>
+            <p>
+              Above the currently-guessed word, we’d like to show the number of
+              wrong guesses, like “Number wrong: 3.” Add this.
+            </p>
+          </div>
+          <div class="section" id="part-three-end-game-on-loss">
+            <h2>Part Three: End Game on Loss</h2>
+            <p>
+              The game only comes (by default) with 6 gallows images and
+              therefore should only allow six wrong guesses. However, it allows
+              players to keep making guesses after this (and there’s a bug, in
+              that the gallows images disappears after there are too many
+              wrong).
+            </p>
+            <p>
+              Change the behavior of the game so that after six wrong guesses,
+              it no longer shows the button area. Instead, it should show the
+              message “You lose” and reveal the correct word.
+            </p>
+            <p>
+              Do this without hard-coding “6” in as the number of guesses —
+              instead, use the prop for <cite>maxGuesses</cite>.
+            </p>
+          </div>
+          <div class="section" id="part-four-alt-text">
+            <h2>Part Four: Alt Text</h2>
+            <p>
+              Add an alt attribute to the hangman image that explains how many
+              guesses have been made, inc case the images don’t load. Something
+              like “5/6” or “5 wrong guesses”
+            </p>
+          </div>
+          <div class="section" id="part-five-use-a-random-word">
+            <h2>Part Five: Use a Random Word</h2>
+            <p>
+              The game right now always uses the word “apple” as the secret
+              word. There’s a file, <cite>words.js</cite>, with a list of words
+              and a function to return a random word. Incorporate this so that
+              the game uses this to choose a secret word.
+            </p>
+          </div>
+          <div class="section" id="part-six-add-restart-button">
+            <h2>Part Six: Add “Restart” Button</h2>
+            <p>
+              Add a button that will restart the game. This should pick a new
+              random word and reset the guessed list and number of wrong
+              guesses.
+            </p>
+            <div class="section" id="further-study">
+              <h3>Further Study</h3>
+              <p>
+                Imagine that other games use a sequence of buttons with letters
+                on them. It would be nice if the buttons could be reusable
+                components.
+              </p>
+              <p>
+                Refactor the app, adding an <cite>AlphaButtons</cite> component.
+              </p>
+              <p>
+                The <cite>AlphaButtons</cite> component renders a sequence of
+                buttons corresponding to letters (in Hangman that would be “a”
+                through “z”). The Hangman component should keep track of which
+                letters have been guessed.
+              </p>
+            </div>
+            <div class="section" id="additional-ideas">
+              <h3>Additional Ideas</h3>
+              <ul class="simple">
+                <li>
+                  Add a message if the player wins (guesses all the letters)
+                </li>
+                <li>Add more CSS styling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+  </body>
+</html>

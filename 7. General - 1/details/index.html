@@ -1,0 +1,305 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Yahtzee Game</title>
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css"/>
+    <link rel="stylesheet" href="_static/handouts-sphinx.css"/>
+
+    
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic|Inconsolata:400,700'
+          rel='stylesheet' type='text/css'>
+    
+</head>
+<body>
+<div id="page-wrapper">
+    <div id="page-sidebar">
+        <header>
+            <p class="project">Demo</p>
+
+            <p class="title">Yahtzee Game</p>
+
+
+        </header>
+        <div id="toc">
+            <ul>
+<li><a class="reference internal" href="#">Yahtzee Game</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#the-game">The Game</a><ul>
+<li><a class="reference internal" href="#scoring-categories">Scoring Categories</a></li>
+<li><a class="reference internal" href="#example-round">Example Round</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tasks">Tasks</a><ul>
+<li><a class="reference internal" href="#part-zero-run-the-solution-and-play">Part Zero: Run the Solution and Play</a></li>
+<li><a class="reference internal" href="#part-one-draw-diagram-of-components">Part One: Draw Diagram of Components</a></li>
+<li><a class="reference internal" href="#part-two-fix-clicking-dice">Part Two: Fix Clicking Dice</a></li>
+<li><a class="reference internal" href="#part-three-read-rules-js">Part Three: Read <cite>Rules.js</cite></a></li>
+<li><a class="reference internal" href="#part-four-add-missing-rules">Part Four: Add Missing Rules</a></li>
+<li><a class="reference internal" href="#part-five-prevent-rolling-more-than-3-times">Part Five: Prevent Rolling More than 3 Times</a></li>
+<li><a class="reference internal" href="#part-six-disallow-re-using-the-score-line">Part Six: Disallow Re-Using The Score Line</a></li>
+<li><a class="reference internal" href="#part-seven-add-descriptions">Part Seven: Add Descriptions</a></li>
+<li><a class="reference internal" href="#part-eight-add-icons">Part Eight: Add Icons</a></li>
+<li><a class="reference internal" href="#part-nine-animate-the-dice">Part Nine: Animate The Dice!</a></li>
+<li><a class="reference internal" href="#part-ten-celebrate">Part Ten: Celebrate!</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#further-study">Further Study</a><ul>
+<li><a class="reference internal" href="#react-specific">React-Specific</a></li>
+<li><a class="reference internal" href="#non-react-specific">Non-React-Specific</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    </div>
+    <div id="page-content">
+        
+  <div class="section" id="yahtzee-game">
+<h1>Yahtzee Game</h1>
+<div class="section" id="setup">
+<h2>Setup</h2>
+<ol class="arabic">
+<li><p class="first">Download starter code.</p>
+</li>
+<li><p class="first">Install required npm libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ npm install
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start The Server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ npm start
+</pre></div>
+</div>
+</li>
+</ol>
+<a class="reference internal image-reference" href="_images/new_screenshot.png"><img alt="_images/new_screenshot.png" src="_images/new_screenshot.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="the-game">
+<h2>The Game</h2>
+<p>Yahtzee is a chance-and-strategy dice rolling game. A game is played over 13
+rounds.</p>
+<p>Each round, the player rolls five 6-sided dice. They may click on any number of
+dice to “freeze” or “unfreeze” them (frozen dice are displayed in a different color). They may
+re-roll the unfrozen dice up to 2 times.</p>
+<p>Each round, they must assign their dice to any unclaimed scoring category. Each
+category scores differently.</p>
+<p>After 13 rounds, the game is over, and the player’s score is the total of each
+scoring category.</p>
+<div class="section" id="scoring-categories">
+<h3>Scoring Categories</h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="51%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Category</th>
+<th class="head">Description</th>
+<th class="head">Example Score</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Ones</strong></td>
+<td>Score 1 for every 1</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span></code> = 2</td>
+</tr>
+<tr class="row-odd"><td><strong>Twos</strong></td>
+<td>Score 2 for every 2</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span></code> = 4</td>
+</tr>
+<tr class="row-even"><td><strong>Threes</strong></td>
+<td>Score 3 for every 3</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">3</span> <span class="pre">3</span></code> = 9</td>
+</tr>
+<tr class="row-odd"><td><strong>Fours</strong></td>
+<td>Score 4 for every 4</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">4</span> <span class="pre">4</span> <span class="pre">5</span></code> = 8</td>
+</tr>
+<tr class="row-even"><td><strong>Fives</strong></td>
+<td>Score 5 for every 5</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">5</span> <span class="pre">5</span> <span class="pre">5</span></code> = 15</td>
+</tr>
+<tr class="row-odd"><td><strong>Sixes</strong></td>
+<td>Score 6 for every 6</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">6</span> <span class="pre">6</span></code> = 12</td>
+</tr>
+<tr class="row-even"><td><strong>3 of Kind</strong></td>
+<td>If 3+ of one value, score sum of all
+dice (otherwise, score 0)</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">3</span> <span class="pre">3</span></code> = 12</td>
+</tr>
+<tr class="row-odd"><td><strong>4 of Kind</strong></td>
+<td>If 4+ of one value, score sum of all
+dice (else 0)</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">2</span> <span class="pre">2</span> <span class="pre">2</span></code> = 8</td>
+</tr>
+<tr class="row-even"><td><strong>Full House</strong></td>
+<td>If 3 of one value and 2 of another,
+score 25 (else 0)</td>
+<td><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">3</span> <span class="pre">3</span></code> = 25</td>
+</tr>
+<tr class="row-odd"><td><strong>Small Straight</strong></td>
+<td>If 4+ values in a row, score 30
+(else 0)</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span> <span class="pre">6</span></code> = 30</td>
+</tr>
+<tr class="row-even"><td><strong>Large Straight</strong></td>
+<td>If 5 values in a row, score 40
+(else 0)</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span> <span class="pre">5</span></code> = 40</td>
+</tr>
+<tr class="row-odd"><td><strong>Yahtzee</strong></td>
+<td>If all values match, score 50 (else 0)</td>
+<td><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">2</span> <span class="pre">2</span> <span class="pre">2</span> <span class="pre">2</span></code> = 50</td>
+</tr>
+<tr class="row-even"><td><strong>Chance</strong></td>
+<td>Score sum of all dice</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span> <span class="pre">6</span></code> = 16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example-round">
+<h3>Example Round</h3>
+<p>The initial roll is: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">4</span> <span class="pre">3</span> <span class="pre">2</span> <span class="pre">5</span></code>.</p>
+<p>The player decides to try to get as many twos as possible, and clicks to
+freeze both twos, then re-rolls, getting a new <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">3</span> <span class="pre">5</span></code>.
+They now have: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">2</span> <span class="pre">5</span></code>.</p>
+<p>The player decides to try for a full house, and freezes all of their
+twos and their three (hoping to roll another 3 to get a full house). They
+re-roll the die showing five, getting a <code class="docutils literal notranslate"><span class="pre">6</span></code> and now have <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">2</span> <span class="pre">6</span></code>.</p>
+<p>Sadly, they didn’t get their full house. They could score this as:</p>
+<ul class="simple">
+<li><em>Twos</em>: for 6 points</li>
+<li><em>Threes</em> for 3 points</li>
+<li><em>Sixes</em>: for 6 points</li>
+<li><em>Three of Kind:</em> (twos) for 15 points</li>
+<li><em>Chance</em>: for 15 points</li>
+</ul>
+<p>Any other category they claimed on this round would score 0.</p>
+</div>
+</div>
+<div class="section" id="tasks">
+<h2>Tasks</h2>
+<div class="section" id="part-zero-run-the-solution-and-play">
+<h3>Part Zero: Run the Solution and Play</h3>
+<p>Play a game or two to get a sense of how things
+should work — this is the version you’ll be working to build.</p>
+</div>
+<div class="section" id="part-one-draw-diagram-of-components">
+<h3>Part One: Draw Diagram of Components</h3>
+<p>Read through the source code and make a diagram of the components, along with
+their props and state.</p>
+<p>As you read the code, think about which areas felt very easy to understand,
+and whether there were things that took a minute to understand.</p>
+</div>
+<div class="section" id="part-two-fix-clicking-dice">
+<h3>Part Two: Fix Clicking Dice</h3>
+<p>You’re supposed to click dice to toggle whether or not they’re going to be
+re-rolled. Unfortunately, this doesn’t work right now!</p>
+<p>Figure out what’swrong or missing with the code for this feature and fix it!</p>
+</div>
+<div class="section" id="part-three-read-rules-js">
+<h3>Part Three: Read <cite>Rules.js</cite></h3>
+<p>The system for evaluating a roll score is handled by a series of object
+oriented classes, since many of the rules are similar to each other.</p>
+<p>Familiarize yourself with how this works, because up next you’ll be fixing some rules…</p>
+</div>
+<div class="section" id="part-four-add-missing-rules">
+<h3>Part Four: Add Missing Rules</h3>
+<p>Two evaluation rule classes in <cite>Rules.js</cite> are incomplete:</p>
+<ul class="simple">
+<li>a full house should be 3 of one die and 2 of another, and should always
+score 25</li>
+<li>a small straight is four dice in a row (<code class="docutils literal notranslate"><span class="pre">1-2-3-4</span></code> or <code class="docutils literal notranslate"><span class="pre">2-3-4-5</span></code>, for example),
+and should always score 30</li>
+</ul>
+<p>Write the classes for these rules.</p>
+</div>
+<div class="section" id="part-five-prevent-rolling-more-than-3-times">
+<h3>Part Five: Prevent Rolling More than 3 Times</h3>
+<p>You should only get two chances per turn to re-roll, but the game has a bug
+where you can re-roll as often as you want as long as you unlock some of the
+dice first. Fix it!</p>
+</div>
+<div class="section" id="part-six-disallow-re-using-the-score-line">
+<h3>Part Six: Disallow Re-Using The Score Line</h3>
+<p>The game currently lets you keep re-scoring the same scoring line (so you
+can score 3 of a kind several times, whereas you should only be able to allocate
+one set of dice here.) Fix it!!  (I’ve provided classes called RuleRow-active and RuleRow-disabled that you can use for styling purposes).</p>
+</div>
+<div class="section" id="part-seven-add-descriptions">
+<h3>Part Seven: Add Descriptions</h3>
+<p>Add a description to each rule to explain how it’s scored (for example: “25 points for a full house”), and have it display before the user has clicked on a rule row.  Once the user clicks a row, hide the description and instead display the score value.</p>
+</div>
+<div class="section" id="part-eight-add-icons">
+<h3>Part Eight: Add Icons</h3>
+<p>Instead of rendering each Die as a simple number in a box, rewrite the code to use font-awesome die icons.  You’ll need to include font-awesome, either using a CDN or try finding a node module to help!  The classes you should use are: “fas fa-dice-one”, “fas fa-dice-two”, “fas fa-dice-three”, etc.</p>
+</div>
+<div class="section" id="part-nine-animate-the-dice">
+<h3>Part Nine: Animate The Dice!</h3>
+<p>This part is a little tricky! Make the Dice shake or spin when they are being rolled. Don’t worry about creating particularly beautiful animations.  Make sure that a user cannot click on a Die to select it while the animation is going on.</p>
+</div>
+<div class="section" id="part-ten-celebrate">
+<h3>Part Ten: Celebrate!</h3>
+<p>Yay! Nice job!  You’ve completed the exercise, but the game still isn’t perfect… If you’re up for it, try adding in some of the following features…</p>
+</div>
+</div>
+<div class="section" id="further-study">
+<h2>Further Study</h2>
+<p>There are lots of good ways to extend this game, letting you practice both
+React-specific and JavaScript-in-general concepts. Pick the ones that interest you.</p>
+<div class="section" id="react-specific">
+<h3>React-Specific</h3>
+<ul class="simple">
+<li>A bug not fixed in our solution: you can assign the same dice to more
+than one score line. Test and fix this.</li>
+<li>It would be nice if the game started with the dice already rolled (rather
+than having to click the button). Implement this.</li>
+<li>Show the total score.</li>
+<li>Add code to detect when the game is over, and add a “play again?” feature
+that resets the game.</li>
+<li>There’s an add-on library you could use with React for “styled components,”
+where you can move CSS out of <code class="docutils literal notranslate"><span class="pre">.css</span></code> files and into component
+definitions. <a class="reference external" href="https://www.styled-components.com/">Learn about this</a> and
+try it out.</li>
+</ul>
+</div>
+<div class="section" id="non-react-specific">
+<h3>Non-React-Specific</h3>
+<ul class="simple">
+<li>The look and feel is super-drab. Add some CSS. Perhaps even any animation
+for the dice when rolling!</li>
+<li>Add a new scoring category for “trash”; this should score only for dice that
+would not match any of the other right-hand categories (i.e., not three of
+a kind <em>and</em> not four of a kind <em>and</em> not a full house <em>and</em> …). What could
+be a good way to do this?</li>
+<li>It would be great to track the highest score ever. Use
+<cite>localStorage</cite> to keep track of this highest score so that it is displayed
+below the scoring area.</li>
+<li>Implement more complex scoring: you can find more
+complex rules to try out at <a class="reference external" href="https://en.wikipedia.org/wiki/Yahtzee#Yahtzee_bonuses_and_Joker_rules">https://en.wikipedia.org/wiki/Yahtzee#Yahtzee_bonuses_and_Joker_rules</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+    </div>
+</div>
+<script type="text/javascript" src="_static/jquery.js"></script>
+<script type="text/javascript" src="_static/underscore.js"></script>
+<script type="text/javascript" src="_static/doctools.js"></script>
+<script type="text/javascript" src="_static/language_data.js"></script> 
+</body>
+</html>

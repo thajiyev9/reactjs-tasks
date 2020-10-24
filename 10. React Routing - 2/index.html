@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>React Router Patterns</title>
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/handouts-sphinx.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic|Inconsolata:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <div id="page-sidebar">
+        <header>
+          <p class="project">Demo</p>
+
+          <p class="title">React Router Patterns</p>
+        </header>
+        <div id="toc">
+          <ul>
+            <li>
+              <a class="reference internal" href="#">React Router Patterns</a>
+              <ul>
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#part-1-react-router-dog-finder"
+                    >React Router Dog Finder</a
+                  >
+                  <ul>
+                    <li>
+                      <a
+                        class="reference internal"
+                        href="#recommended-structure"
+                        >Recommended Structure</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a
+                    class="reference internal"
+                    href="#further-study-react-router-calculator"
+                    >Further Study: React Router Calculator</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="page-content">
+        <div class="section" id="react-router-patterns">
+          <h1>React Router Patterns</h1>
+          <div class="section" id="part-1-react-router-dog-finder">
+            <h2>React Router Dog Finder</h2>
+            <p>Build an app that allows a user to browse dogs.</p>
+            <p>
+              At the top of the app, add a navbar that displays the current
+              active route.
+            </p>
+            <p>The app should have the following routes:</p>
+            <ul class="simple">
+              <li>
+                <cite>/dogs</cite> is the homepage and shows all three dogs
+              </li>
+              <li>
+                When you’re on the homepage, you can click on a dog to view more
+                information on that dog. Each dog should have its own unique
+                route. For example, clicking on Whiskey will take you to
+                <cite>/dogs/whiskey</cite>.
+              </li>
+              <li>
+                Every other endpoint not listed should redirect you to
+                <cite>/dogs</cite>.
+              </li>
+            </ul>
+            <p>
+              Make the website responsive (if you have time). The solution uses
+              bootstrap to add a responsive navbar and grid layout.
+            </p>
+
+            <div class="section" id="recommended-structure">
+              <h3>Recommended Structure</h3>
+              <p>
+                You can preload the <cite>&lt;App /&gt;</cite> component with
+                the following
+                <code class="docutils literal notranslate"
+                  ><span class="pre">defaultProps</span></code
+                >
+                for convenience:
+              </p>
+              <div class="highlight-jsx notranslate">
+                <div class="highlight">
+                  <pre><span></span><span class="nx">App</span><span class="p">.</span><span class="nx">defaultProps</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">dogs</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Whiskey&quot;</span><span class="p">,</span>
+      <span class="nx">age</span><span class="p">:</span> <span class="m">5</span><span class="p">,</span>
+      <span class="nx">src</span><span class="p">:</span> <span class="nx">whiskey</span><span class="p">,</span>
+      <span class="nx">facts</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;Whiskey loves eating popcorn.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Whiskey is a terrible guard dog.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Whiskey wants to cuddle with you!&quot;</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Hazel&quot;</span><span class="p">,</span>
+      <span class="nx">age</span><span class="p">:</span> <span class="m">3</span><span class="p">,</span>
+      <span class="nx">src</span><span class="p">:</span> <span class="nx">hazel</span><span class="p">,</span>
+      <span class="nx">facts</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;Hazel has soooo much energy!&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Hazel is highly intelligent.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Hazel loves people more than dogs.&quot;</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Tubby&quot;</span><span class="p">,</span>
+      <span class="nx">age</span><span class="p">:</span> <span class="m">4</span><span class="p">,</span>
+      <span class="nx">src</span><span class="p">:</span> <span class="nx">tubby</span><span class="p">,</span>
+      <span class="nx">facts</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;Tubby is not the brightest dog&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Tubby does not like walks or exercise.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Tubby loves eating food.&quot;</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre>
+                </div>
+              </div>
+              <p>The <cite>&lt;App /&gt;</cite> should render:</p>
+              <ul class="simple">
+                <li>
+                  a <cite>&lt;Nav /&gt;</cite> component with the dogs’ names
+                  passed as props
+                </li>
+                <li>
+                  a <cite>&lt;Switch&gt;</cite> with your
+                  <cite>&lt;Route /&gt;</cite> declarations
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section" id="further-study-react-router-calculator">
+            <h2>Further Study: React Router Calculator</h2>
+            <p>
+              It’s time to build another routing-based calculator, but this time
+              with React Router!
+            </p>
+            <p>Build a calculator that supports routes like:</p>
+            <dl class="docutils">
+              <dt><cite>/add/1/2</cite></dt>
+              <dd>should render a component that displays 3.</dd>
+              <dt><cite>/subtract/3/2</cite></dt>
+              <dd>should render a component that displays 1.</dd>
+              <dt><cite>/multiply/6/4</cite></dt>
+              <dd>should render a component that displays 24.</dd>
+              <dt><cite>/divide/20/5</cite></dt>
+              <dd>should render a component that displays 4.</dd>
+            </dl>
+            <p>
+              As a bonus, try to do this without using a different component for
+              each of the four math operations!
+            </p>
+            <p>Good luck!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+  </body>
+</html>
